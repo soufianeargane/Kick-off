@@ -1,114 +1,99 @@
-import { useEffect } from "react";
-import { Text, StyleSheet, View, Image, StatusBar } from "react-native";
+import { useEffect, useState } from "react";
+import { Text, StyleSheet, View, Image, ScrollView, TouchableOpacity } from "react-native";
+import axios from "axios";
 
 import LiveScoresContainer from "../components/LiveScoresContainer";
 import MatchCardContainer from "../components/MatchCardContainer";
+import BottomBar from "../components/BottomBar";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const Matches = () => {
+    const [matches, setMatches] = useState([]);
     useEffect(() => {
-
+        const fetchMatches = async () => {
+            try {
+                const response = await axios.get("https://api.sportmonks.com/v3/football/fixtures?api_token=jrt9w7G0gDykH1CB4LaUQmZXThK7Qvmms80qPUPn30dGfZNMbyksdPoDBGlc", {
+                });
+                console.log(response.data.data);
+                setMatches(response.data.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchMatches();
     }, []);
     return (
         <View style={styles.galileoDesign}>
-            {/* <StatusBar hidden={true} /> */}
             <View style={styles.depth0Frame0}>
                 <LiveScoresContainer />
-                <MatchCardContainer
-                    dimensionsText={require("../../assets/depth-3-frame-0.png")}
-                    matchResultText="Tottenham 2 - 0 Watford"
-                    leagueNameText="Premier League"
-                />
-                <MatchCardContainer
-                    dimensionsText={require("../../assets/depth-3-frame-01.png")}
-                    matchResultText="Crystal Palace 1 - 1 West Ham"
-                    leagueNameText="Premier League"
-                    propWidth={237}
-                    propWidth1={237}
-                    propWidth2={237}
-                />
-                <MatchCardContainer
-                    dimensionsText={require("../../assets/depth-3-frame-02.png")}
-                    matchResultText="Villarreal 1 - 1 Real Madrid"
-                    leagueNameText="La Liga"
-                    propWidth={210}
-                    propWidth1={210}
-                    propWidth2={210}
-                />
-                {/* <View style={styles.depth1Frame7} /> */}
-                {/* <View style={[styles.depth1Frame8, styles.depth1FrameBg]}>
-                    <View style={styles.depth2Frame01}>
-                        <View style={[styles.depth3Frame01, styles.depth3FrameLayout]}>
-                            <View style={[styles.depth4Frame0, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth5Frame0}
-                                    contentFit="cover"
-                                    source={require("../assets/depth-5-frame-01.png")}
-                                />
-                            </View>
-                            <View style={[styles.depth4Frame1, styles.depth4FrameSpaceBlock]}>
-                                <View style={styles.depth5Frame01}>
-                                    <Text style={[styles.home, styles.homeTypo]}>Home</Text>
+                {/* filter  */}
+                <View style={styles.barHolder}>
+                    <View style={{ paddingHorizontal: 25 }}>
+                        <View style={styles.filterBar} >
+                            <TouchableOpacity style={{
+                                backgroundColor: Color.colorRosybrown,
+                                paddingHorizontal: 10,
+                                paddingVertical: 5,
+                                borderRadius: 15,
+                            }} >
+                                <View >
+                                    <Text style={{ color: 'white' }}>All Matches</Text>
                                 </View>
-                            </View>
-                        </View>
-                        <View style={[styles.depth3Frame1, styles.depth3FrameLayout]}>
-                            <View style={[styles.depth4Frame01, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth5Frame0}
-                                    contentFit="cover"
-                                    source={require("../assets/depth-5-frame-02.png")}
-                                />
-                            </View>
-                            <View
-                                style={[styles.depth4Frame11, styles.depth4FrameSpaceBlock]}
-                            >
-                                <View style={styles.depth5Frame01}>
-                                    <Text style={[styles.scores, styles.homeTypo]}>Scores</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{
+                                backgroundColor: Color.colorRosybrown,
+                                paddingHorizontal: 10,
+                                paddingVertical: 5,
+                                borderRadius: 15,
+                            }} >
+                                <View >
+                                    <Text style={{ color: 'white' }}>All Matches</Text>
                                 </View>
-                            </View>
-                        </View>
-                        <View style={[styles.depth3Frame1, styles.depth3FrameLayout]}>
-                            <View style={[styles.depth4Frame0, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth5Frame0}
-                                    contentFit="cover"
-                                    source={require("../assets/depth-5-frame-03.png")}
-                                />
-                            </View>
-                            <View
-                                style={[styles.depth4Frame12, styles.depth4FrameSpaceBlock]}
-                            >
-                                <View style={styles.depth5Frame01}>
-                                    <Text style={[styles.home, styles.homeTypo]}>Stats</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{
+                                backgroundColor: Color.colorRosybrown,
+                                paddingHorizontal: 10,
+                                paddingVertical: 5,
+                                borderRadius: 15,
+                            }} >
+                                <View >
+                                    <Text style={{ color: 'white' }}>All Matches</Text>
                                 </View>
-                            </View>
-                        </View>
-                        <View style={[styles.depth3Frame1, styles.depth3FrameLayout]}>
-                            <View style={[styles.depth4Frame0, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth5Frame0}
-                                    contentFit="cover"
-                                    source={require("../assets/depth-5-frame-04.png")}
-                                />
-                            </View>
-                            <View
-                                style={[styles.depth4Frame13, styles.depth4FrameSpaceBlock]}
-                            >
-                                <View style={styles.depth5Frame01}>
-                                    <Text style={[styles.home, styles.homeTypo]}>My Team</Text>
-                                </View>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
-                </View> */}
-                {/* <View style={[styles.depth1Frame9, styles.depth1FrameBg]} /> */}
+                </View>
+                <ScrollView style={{ marginBottom: 75 }}>
+                    {matches && matches.map((match) => (
+                        <TouchableOpacity key={match.id} activeOpacity={0.1} onPress={() => console.log("Match pressed")}>
+                            <MatchCardContainer
+                                dimensionsText={require("../../assets/depth-3-frame-0.png")}
+                                matchResultText={match.name}
+                                leagueNameText={match.starting_at}
+                            />
+                        </TouchableOpacity>
+                    ))}
+                </ScrollView>
             </View>
+            <BottomBar />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    barHolder: {
+        backgroundColor: Color.colorGray_200,
+        height: 50,
+        zIndex: 100,
+        width: "100%",
+        paddingBottom: 24,
+    },
+    filterBar: {
+        flexDirection: "row",
+        justifyContent: "",
+        gap: 10,
+        // padding: 20,
+    },
     depth1FrameBg: {
         backgroundColor: Color.colorGray_100,
         width: 390,
@@ -226,9 +211,10 @@ const styles = StyleSheet.create({
     },
     depth0Frame0: {
         backgroundColor: Color.colorGray_200,
-        height: 844,
-        overflow: "hidden",
-        width: '100%'
+        height: '100%',
+        // overflow: "hidden",
+        width: '100%',
+        // paddingBottom: 24,
     },
     galileoDesign: {
         backgroundColor: Color.colorWhite,

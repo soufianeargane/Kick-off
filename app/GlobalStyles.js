@@ -1,8 +1,9 @@
 /* fonts */
+
 export const FontFamily = {
-    lexendMedium: 'Arial',
-    lexendRegular: "Arial",
-    lexendBold: "Arial",
+    lexendMedium: "Lexend-Medium",
+    lexendRegular: "Lexend-Regular",
+    lexendBold: "Lexend-Bold",
 };
 /* font sizes */
 export const FontSize = {

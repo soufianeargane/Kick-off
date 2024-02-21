@@ -2,19 +2,19 @@ import { useEffect, useState } from "react";
 import { Text, StyleSheet, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import axios from "axios";
 
+
 import LiveScoresContainer from "../components/LiveScoresContainer";
 import MatchCardContainer from "../components/MatchCardContainer";
 import BottomBar from "../components/BottomBar";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
-const Matches = () => {
+const Matches = ({ navigation }) => {
     const [matches, setMatches] = useState([]);
     useEffect(() => {
         const fetchMatches = async () => {
             try {
-                const response = await axios.get("https://api.sportmonks.com/v3/football/fixtures?api_token=jrt9w7G0gDykH1CB4LaUQmZXThK7Qvmms80qPUPn30dGfZNMbyksdPoDBGlc", {
+                const response = await axios.get("https://api.sportmonks.com/v3/football/fixtures?include=league;participants;venue&api_token=jrt9w7G0gDykH1CB4LaUQmZXThK7Qvmms80qPUPn30dGfZNMbyksdPoDBGlc", {
                 });
-                console.log(response.data.data);
                 setMatches(response.data.data);
             } catch (error) {
                 console.error(error);
@@ -22,6 +22,11 @@ const Matches = () => {
         };
         fetchMatches();
     }, []);
+
+    const handlePress = (match) => {
+        console.log('Match pressed');
+        navigation.navigate('MatchDetails', { match });
+    };
     return (
         <View style={styles.galileoDesign}>
             <View style={styles.depth0Frame0}>
@@ -65,7 +70,7 @@ const Matches = () => {
                 </View>
                 <ScrollView style={{ marginBottom: 75 }}>
                     {matches && matches.map((match) => (
-                        <TouchableOpacity key={match.id} activeOpacity={0.1} onPress={() => console.log("Match pressed")}>
+                        <TouchableOpacity key={match.id} activeOpacity={0.1} onPress={() => handlePress(match)}>
                             <MatchCardContainer
                                 dimensionsText={require("../../assets/depth-3-frame-0.png")}
                                 matchResultText={match.name}

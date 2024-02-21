@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         fontFamily: FontFamily.lexendMedium,
         fontWeight: "500",
         lineHeight: 18,
-        fontSize: FontSize.size_xs,
+        fontSize: 10,
         letterSpacing: 0,
     },
     depth2Frame0: {

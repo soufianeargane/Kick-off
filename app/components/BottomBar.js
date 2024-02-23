@@ -1,7 +1,19 @@
 import { View, StyleSheet, Image, Text, Pressable } from 'react-native';
 import { Color, FontFamily, FontSize, Padding } from '../GlobalStyles';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 function BottomBar() {
+
+    const navigation = useNavigation();
+    const goToHome = () => {
+        navigation.replace('Matches');
+    };
+
+    const goToPlayers = () => {
+        navigation.replace('Players');
+    };
     return (
         <View style={styles.container}>
             <View style={[styles.depth1Frame8, styles.depth1FrameBg]}>
@@ -12,7 +24,7 @@ function BottomBar() {
                             styles.depth3FrameLayout,
                             pressed && { backgroundColor: '#eee' } // Change the background color when pressed
                         ]}
-                        onPress={() => console.log('Home pressed')}
+                        onPress={() => goToHome()}
                     >
                         <View style={[styles.depth4Frame0, styles.depth4FrameFlexBox]}>
                             <Image
@@ -27,55 +39,14 @@ function BottomBar() {
                             </View>
                         </View>
                     </Pressable>
+
                     <Pressable
                         style={({ pressed }) => [
                             styles.depth3Frame1,
                             styles.depth3FrameLayout,
                             pressed && { backgroundColor: '#eee' } // Change the background color when pressed
                         ]}
-                        onPress={() => console.log('trophy pressed')}
-                    >
-                        <View style={[styles.depth4Frame0, styles.depth4FrameFlexBox]}>
-                            <Image
-                                style={styles.depth5Frame0}
-                                contentFit="cover"
-                                source={require("../../assets/trophy.png")}
-                            />
-                        </View>
-                        <View style={[styles.depth4Frame1, styles.depth4FrameSpaceBlock]}>
-                            <View style={styles.depth5Frame01}>
-                                <Text style={[styles.home, styles.homeTypo]}>trophy</Text>
-                            </View>
-                        </View>
-                    </Pressable>
-                    <Pressable
-                        style={({ pressed }) => [
-                            styles.depth3Frame1,
-                            styles.depth3FrameLayout,
-                            pressed && { backgroundColor: '#eee' } // Change the background color when pressed
-                        ]}
-                        onPress={() => console.log('stats pressed')}
-                    >
-                        <View style={[styles.depth4Frame0, styles.depth4FrameFlexBox]}>
-                            <Image
-                                style={styles.depth5Frame0}
-                                contentFit="cover"
-                                source={require("../../assets/stats.png")}
-                            />
-                        </View>
-                        <View style={[styles.depth4Frame1, styles.depth4FrameSpaceBlock]}>
-                            <View style={styles.depth5Frame01}>
-                                <Text style={[styles.home, styles.homeTypo]}>stats</Text>
-                            </View>
-                        </View>
-                    </Pressable>
-                    <Pressable
-                        style={({ pressed }) => [
-                            styles.depth3Frame1,
-                            styles.depth3FrameLayout,
-                            pressed && { backgroundColor: '#eee' } // Change the background color when pressed
-                        ]}
-                        onPress={() => console.log('people pressed')}
+                        onPress={() => goToPlayers()}
                     >
                         <View style={[styles.depth4Frame0, styles.depth4FrameFlexBox]}>
                             <Image
@@ -111,7 +82,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     depth3FrameLayout: {
-        width: 84,
+        width: '50%',
         alignItems: "center",
         height: 54,
     },
@@ -183,7 +154,7 @@ const styles = StyleSheet.create({
         width: 40,
     },
     depth3Frame1: {
-        marginLeft: 8,
+        // marginLeft: 8,
         alignItems: "center",
     },
     depth4Frame12: {
@@ -196,6 +167,8 @@ const styles = StyleSheet.create({
         width: 358,
         height: 54,
         flexDirection: "row",
+        width: '100%',
+        justifyContent: "space-between",
     },
     depth1Frame8: {
         borderStyle: "solid",

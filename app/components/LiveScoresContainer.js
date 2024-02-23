@@ -2,12 +2,12 @@ import * as React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
 
-const LiveScoresContainer = () => {
+const LiveScoresContainer = ({ title }) => {
     return (
         <View style={styles.topbar}>
             <View style={styles.depth2Frame0}>
                 <View style={styles.depth5Frame0}>
-                    <Text style={styles.liveScores}>Matches</Text>
+                    <Text style={styles.liveScores}>{title}</Text>
                 </View>
             </View>
         </View>

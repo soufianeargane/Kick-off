@@ -30,7 +30,7 @@ const Matches = ({ navigation }) => {
     return (
         <View style={styles.galileoDesign}>
             <View style={styles.depth0Frame0}>
-                <LiveScoresContainer />
+                <LiveScoresContainer title={'Matches'} />
                 {/* filter  */}
                 <View style={styles.barHolder}>
                     <View style={{ paddingHorizontal: 25 }}>

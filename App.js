@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Navigation from './app/Navigation';
 import { useFonts } from "expo-font";
+import { Provider } from 'react-redux';
+import store from './app/state/store';
 
 
 export default function App() {
@@ -13,7 +15,9 @@ export default function App() {
     "Lexend-Bold": require("./assets/fonts/Lexend-Bold.ttf"),
   });
   return (
-    <Navigation />
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   );
 }
 

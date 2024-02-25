@@ -4,14 +4,25 @@ import { Color, FontFamily, FontSize, Padding } from '../GlobalStyles';
 import LiveScoresContainer from '../components/LiveScoresContainer';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigation } from '@react-navigation/native';
+import { setPlayer } from '../state/playerSlice';
+import { useDispatch } from 'react-redux';
 
 function Players() {
     const [players, setPlayers] = useState([]);
 
+    const navigation = useNavigation();
+    const dispatch = useDispatch();
+
+    const goToPlayerDetails = (player) => {
+        dispatch(setPlayer(player));
+        navigation.navigate('PlayerDetails');
+    };
+
     useEffect(() => {
         const fetchPlayers = async () => {
             try {
-                const response = await axios.get("https://api.sportmonks.com/v3.0/football/players?api_token=jrt9w7G0gDykH1CB4LaUQmZXThK7Qvmms80qPUPn30dGfZNMbyksdPoDBGlc", {
+                const response = await axios.get("https://api.sportmonks.com/v3/football/players?include=nationality&api_token=jrt9w7G0gDykH1CB4LaUQmZXThK7Qvmms80qPUPn30dGfZNMbyksdPoDBGlc", {
                 });
                 const data = response.data.data;
                 setPlayers(response.data.data.slice(0, 12));
@@ -57,7 +68,9 @@ function Players() {
                                     <Text style={styles.playerNames}>
                                         {player.firstname} {player.lastname}
                                     </Text>
-                                    <Text style={styles.team}>Barcelona</Text>
+                                    <Text style={styles.team}>
+                                        {player.nationality.name}
+                                    </Text>
                                 </View>
                             </View>
                             <View style={{
@@ -69,7 +82,10 @@ function Players() {
                                     paddingVertical: 5,
                                     borderRadius: 15,
                                     justifyContent: 'center',
-                                }} >
+
+                                }}
+                                    onPress={() => goToPlayerDetails(player)}
+                                >
                                     <View >
                                         <Text style={{ color: 'white' }}>View</Text>
                                     </View>

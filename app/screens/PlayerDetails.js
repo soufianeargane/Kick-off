@@ -1,33 +1,17 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
 import { FontFamily, Color, Border, Padding, FontSize } from "../GlobalStyles";
+import { useSelector } from 'react-redux';
 
-const Rachid = () => {
+const PlayerDetails = () => {
+
+    const player = useSelector((state) => state.player.player);
+    console.log('====================================');
+    console.log(player);
+    console.log('====================================');
     return (
-        <View style={styles.galileoDesign}>
+        <ScrollView style={styles.galileoDesign}>
             <View style={styles.depth0Frame0}>
-                <View style={styles.depth1Frame0}>
-                    <View style={[styles.depth2Frame0, styles.frameFlexBox]}>
-                        <View style={[styles.depth3Frame0, styles.frameLayout3]}>
-                            <Image
-                                style={styles.depth4Frame0}
-                                contentFit="cover"
-                                source={require("../../assets/depth-5-frame-0.png")}
-                            />
-                        </View>
-                        <View style={[styles.depth3Frame1, styles.frameFlexBox]}>
-                            <View style={[styles.depth4Frame01, styles.frameLayout3]}>
-                                <View style={[styles.depth5Frame0, styles.frameLayout3]}>
-                                    <Image
-                                        style={styles.depth4Frame0}
-                                        contentFit="cover"
-                                        source={require("../../assets/depth-6-frame-0.png")}
-                                    />
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                </View>
                 <View style={styles.depth1Frame1}>
                     <View style={[styles.depth2Frame01, styles.frameLayout2]}>
                         <View style={[styles.depth3Frame01, styles.frameLayout2]}>
@@ -35,34 +19,27 @@ const Rachid = () => {
                                 <Image
                                     style={[styles.depth5Frame01, styles.frameLayout1]}
                                     contentFit="cover"
-                                    source={require("../../assets/depth-5-frame-0.png")}
+                                    source={{
+                                        uri: player?.image_path,
+                                    }}
                                 />
                             </View>
                             <View style={styles.depth4Frame1}>
                                 <View style={styles.depth5Frame02}>
                                     <View style={styles.depth6Frame01}>
                                         <Text style={[styles.lebronJames, styles.textTypo]}>
-                                            Lebron James
+                                            {player?.display_name}
                                         </Text>
                                     </View>
                                 </View>
                                 <View style={styles.depth5Frame1}>
                                     <View style={styles.depth6Frame01}>
                                         <Text style={[styles.proBasketballPlayer, styles.ppgTypo]}>
-                                            Pro Basketball Player
+                                            {player?.nationality?.name}
                                         </Text>
                                     </View>
                                 </View>
                             </View>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.depth1Frame2}>
-                    <View style={styles.depth2Frame02}>
-                        <View style={styles.depth3Frame02}>
-                            <Text style={[styles.seasonalStats, styles.textTypo]}>
-                                Seasonal Stats
-                            </Text>
                         </View>
                     </View>
                 </View>
@@ -78,12 +55,14 @@ const Rachid = () => {
                         <View style={styles.depth3Frame11}>
                             <View style={styles.depth4Frame04}>
                                 <View style={styles.depth3Frame02}>
-                                    <Text style={styles.points}>Points</Text>
+                                    <Text style={styles.points}>
+                                        height
+                                    </Text>
                                 </View>
                             </View>
                             <View style={styles.depth4Frame11}>
                                 <View style={styles.depth3Frame02}>
-                                    <Text style={[styles.ppg, styles.ppgTypo]}>32.3 PPG</Text>
+                                    <Text style={[styles.ppg, styles.ppgTypo]}>{player?.height} cm</Text>
                                 </View>
                             </View>
                         </View>
@@ -99,12 +78,16 @@ const Rachid = () => {
                         <View style={styles.depth3Frame11}>
                             <View style={styles.depth4Frame04}>
                                 <View style={styles.depth3Frame02}>
-                                    <Text style={styles.points}>Rebounds</Text>
+                                    <Text style={styles.points}>
+                                        Weight
+                                    </Text>
                                 </View>
                             </View>
                             <View style={styles.depth4Frame11}>
                                 <View style={styles.depth3Frame02}>
-                                    <Text style={[styles.ppg, styles.ppgTypo]}>7.5 RPG</Text>
+                                    <Text style={[styles.ppg, styles.ppgTypo]}>
+                                        {player?.weight} kg
+                                    </Text>
                                 </View>
                             </View>
                         </View>
@@ -120,18 +103,22 @@ const Rachid = () => {
                         <View style={styles.depth3Frame11}>
                             <View style={styles.depth4Frame04}>
                                 <View style={styles.depth3Frame02}>
-                                    <Text style={styles.points}>Assists</Text>
+                                    <Text style={styles.points}>
+                                        Date of Birth
+                                    </Text>
                                 </View>
                             </View>
                             <View style={styles.depth4Frame11}>
                                 <View style={styles.depth3Frame02}>
-                                    <Text style={[styles.ppg, styles.ppgTypo]}>6.8 APG</Text>
+                                    <Text style={[styles.ppg, styles.ppgTypo]}>
+                                        {player?.date_of_birth}
+                                    </Text>
                                 </View>
                             </View>
                         </View>
                     </View>
                 </View>
-                <View style={styles.depth1Frame2}>
+                {/* <View style={styles.depth1Frame2}>
                     <View style={styles.depth2Frame04}>
                         <View style={styles.depth3Frame02}>
                             <Text style={[styles.seasonalStats, styles.textTypo]}>
@@ -220,82 +207,10 @@ const Rachid = () => {
                     </View>
                 </View>
                 <View style={styles.depth1Frame9}>
-                    {/* <View style={styles.depth2Frame08}>
-                        <View style={styles.depth3FrameLayout}>
-                            <View style={[styles.depth4Frame011, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth4Frame0}
-                                    contentFit="cover"
-                                    source={require("../../assets/depth-5-frame-01.png")}
-                                />
-                            </View>
-                            <View style={[styles.depth4Frame16, styles.depth4FrameLayout]}>
-                                <View style={styles.depth6Frame01}>
-                                    <Text style={[styles.home, styles.homeTypo]}>Home</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={[styles.depth3Frame14, styles.depth3FrameLayout]}>
-                            <View style={[styles.depth4Frame012, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth4Frame0}
-                                    contentFit="cover"
-                                    source={require("../../assets/depth-5-frame-02.png")}
-                                />
-                            </View>
-                            <View style={[styles.depth4Frame17, styles.depth4FrameLayout]}>
-                                <View style={styles.depth6Frame01}>
-                                    <Text style={[styles.players, styles.homeTypo]}>Players</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={[styles.depth3Frame14, styles.depth3FrameLayout]}>
-                            <View style={[styles.depth4Frame012, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth4Frame0}
-                                    contentFit="cover"
-                                    source={require("../../assets/depth-5-frame-03.png")}
-                                />
-                            </View>
-                            <View style={[styles.depth4Frame18, styles.depth4FrameLayout]}>
-                                <View style={styles.depth6Frame01}>
-                                    <Text style={[styles.players, styles.homeTypo]}>Teams</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={[styles.depth3Frame14, styles.depth3FrameLayout]}>
-                            <View style={[styles.depth4Frame012, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth4Frame0}
-                                    contentFit="cover"
-                                    source={require("../../assets/depth-5-frame-04.png")}
-                                />
-                            </View>
-                            <View style={[styles.depth4Frame19, styles.depth4FrameLayout]}>
-                                <View style={styles.depth6Frame01}>
-                                    <Text style={[styles.players, styles.homeTypo]}>Stats</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={[styles.depth3Frame14, styles.depth3FrameLayout]}>
-                            <View style={[styles.depth4Frame012, styles.depth4FrameFlexBox]}>
-                                <Image
-                                    style={styles.depth4Frame0}
-                                    contentFit="cover"
-                                    source={require("../../assets/depth-5-frame-05.png")}
-                                />
-                            </View>
-                            <View style={[styles.depth4Frame110, styles.depth4FrameLayout]}>
-                                <View style={styles.depth6Frame01}>
-                                    <Text style={[styles.players, styles.homeTypo]}>More</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View> */}
                 </View>
-                <View style={styles.depth1Frame10} />
+                <View style={styles.depth1Frame10} /> */}
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
@@ -688,4 +603,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Rachid;
+export default PlayerDetails;

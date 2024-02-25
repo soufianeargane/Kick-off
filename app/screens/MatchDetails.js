@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { Color, FontSize } from '../GlobalStyles';
-import BottomBar from "../components/BottomBar";
+// import BottomBar from "../components/BottomBar";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -18,7 +18,6 @@ function MatchDetails({ route }) {
     };
     fetchCountry();
   }, []);
-  console.log(match);
   return (
     <View style={styles.container}>
       {(match && country) && (
@@ -122,7 +121,7 @@ function MatchDetails({ route }) {
         </ScrollView>
       )}
 
-      <BottomBar />
+      {/* <BottomBar /> */}
     </View>
   );
 }

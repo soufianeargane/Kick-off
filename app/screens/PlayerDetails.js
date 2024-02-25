@@ -6,9 +6,6 @@ import { useSelector } from 'react-redux';
 const PlayerDetails = () => {
 
     const player = useSelector((state) => state.player.player);
-    console.log('====================================');
-    console.log(player);
-    console.log('====================================');
     return (
         <ScrollView style={styles.galileoDesign}>
             <View style={styles.depth0Frame0}>
@@ -118,97 +115,6 @@ const PlayerDetails = () => {
                         </View>
                     </View>
                 </View>
-                {/* <View style={styles.depth1Frame2}>
-                    <View style={styles.depth2Frame04}>
-                        <View style={styles.depth3Frame02}>
-                            <Text style={[styles.seasonalStats, styles.textTypo]}>
-                                Performance
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.depth1Frame5}>
-                    <View style={[styles.depth2Frame05, styles.frameLayout]}>
-                        <View style={styles.frameLayout}>
-                            <View style={styles.depth4Frame09}>
-                                <View style={styles.depth3Frame02}>
-                                    <Text style={[styles.points1, styles.text1Typo]}>Points</Text>
-                                </View>
-                            </View>
-                            <View
-                                style={[styles.depth4Frame14, styles.depth4FrameSpaceBlock]}
-                            >
-                                <View style={styles.depth5Frame010}>
-                                    <Text style={[styles.text, styles.textTypo]}>+1%</Text>
-                                </View>
-                            </View>
-                            <View style={[styles.depth4Frame2, styles.depth4FrameSpaceBlock]}>
-                                <View style={styles.depth5Frame011}>
-                                    <View style={styles.depth3Frame02}>
-                                        <Text style={[styles.last7Days, styles.ppgTypo]}>
-                                            Last 7 days
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View
-                                    style={[styles.depth5Frame11, styles.depth5FrameSpaceBlock]}
-                                >
-                                    <View style={styles.depth3Frame02}>
-                                        <Text style={[styles.text1, styles.text1Typo]}>+2%</Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.depth1Frame2}>
-                    <View style={styles.depth2Frame06}>
-                        <View style={styles.depth3Frame02}>
-                            <Text style={[styles.seasonalStats, styles.textTypo]}>
-                                Historical Data
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.depth1Frame5}>
-                    <View style={[styles.depth2Frame05, styles.frameLayout]}>
-                        <View style={styles.frameLayout}>
-                            <View style={styles.depth4Frame09}>
-                                <View style={styles.depth3Frame02}>
-                                    <Text style={[styles.points1, styles.text1Typo]}>
-                                        Points Per Game
-                                    </Text>
-                                </View>
-                            </View>
-                            <View
-                                style={[styles.depth4Frame14, styles.depth4FrameSpaceBlock]}
-                            >
-                                <View style={styles.depth5Frame010}>
-                                    <Text style={[styles.text, styles.textTypo]}>25.3</Text>
-                                </View>
-                            </View>
-                            <View style={[styles.depth4Frame2, styles.depth4FrameSpaceBlock]}>
-                                <View style={styles.depth5Frame014}>
-                                    <View style={styles.depth3Frame02}>
-                                        <Text style={[styles.last7Days, styles.ppgTypo]}>
-                                            2011-2021
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View
-                                    style={[styles.depth5Frame12, styles.depth5FrameSpaceBlock]}
-                                >
-                                    <View style={styles.depth3Frame02}>
-                                        <Text style={[styles.text1, styles.text1Typo]}>+21%</Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.depth1Frame9}>
-                </View>
-                <View style={styles.depth1Frame10} /> */}
             </View>
         </ScrollView>
     );
